@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Console</title>
+</head>
+<body>
+	<h1>client demo</h1>
+	<p>just type things on console.log and see the result on http://127.0.0.1:3000</p>
+	<script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io("http://127.0.0.1:3000");
+		function bindConsoleWidthSocket(method){
+			var oldMethod = console[method];
+			console[method] = function(){
+				socket.emit('echo', {
+					type: method,
+					args: arguments
+				})
+				oldMethod.apply(console, arguments);
+			}
+		}
+		var methods = ['log', 'error', 'warn', 'time', 'timeEnd'];
+		methods.forEach(function(method){
+			bindConsoleWidthSocket(method);
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+<h3>Server console</h3>
+<p>open console see the result</p>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io("http://127.0.0.1:3000");
+socket.on('echo', function(msg) {
+    var type = msg.type, args = msg.args;
+    var arr = [];
+    for(var def in args){
+    	arr.push(args[def]);
+    }
+    console[type].apply(console, arr);
+    console[type].apply(console, args);
+})
+</script>
+</body>
+</html>
