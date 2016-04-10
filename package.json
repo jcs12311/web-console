@@ -1,6 +1,6 @@
 {
   "name": "jsweb-console",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "console.log on mobile and see the result on pc, for mobile debug",
   "main": "index.js",
   "scripts": {
