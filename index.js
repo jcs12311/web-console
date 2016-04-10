@@ -15,10 +15,6 @@ function handler(req, res){
 }
 
 io.on('connection', function(socket) {
-    // console.log('a user connected');
-    socket.on('disconnect', function() {
-        // console.log('a user disconnected');
-    });
     socket.on('echo', function(msg) {
         io.emit('echo', msg);
     })
