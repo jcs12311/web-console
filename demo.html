@@ -6,10 +6,12 @@
 <body>
 	<h1>client demo</h1>
 	<p>just type things on console.log and see the result on http://127.0.0.1:3000</p>
-	<script src="./node_modules/socket.io-client/socket.io.js"></script>
-	<script type="text/javascript" src="./web-console.js"></script>
+	<script src="http://127.0.0.1:3000/node_modules/socket.io-client/socket.io.js"></script>
+	<script src="http://127.0.0.1:3000/web-console.js"></script>
 	<script type="text/javascript">
-		WebConsole().implement("http://127.0.0.1:3000");
+        new WebConsole({
+            host: "http://127.0.0.1:3000"
+        })
 	</script>
 </body>
 </html>
