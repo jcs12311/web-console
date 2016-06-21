@@ -1,6 +1,6 @@
-var WebConsole = function(params) {
+window.WebConsole = function(params) {
     var defaults = {
-        methods: ['log', 'error', 'warn', 'time', 'timeEnd'], // console methods
+        methods: ['log', 'error', 'warn'], // console methods
     }
 
     var p = {};
