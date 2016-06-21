@@ -35,11 +35,9 @@ function handler(req, res){
           contentType = 'text/javascript';
           break;
   }
-  console.log(__dirname,' asd', filePath);
   fs.readFile(filePath, function (err, data) {
       if (err) {
           res.writeHead(500);
-          console.log(err);
           return res.end('Error loading ' + filePath);
       }
       res.writeHead(200, { 'Content-Type': contentType });
