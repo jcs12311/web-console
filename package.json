@@ -1,6 +1,6 @@
 {
   "name": "jsweb-console",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "console.log on mobile and see the result on pc, for mobile debug",
   "main": "./bin/jsweb-console",
   "bin": {

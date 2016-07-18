@@ -1,6 +1,6 @@
 window.WebConsole = function(params) {
     var defaults = {
-        methods: ['log', 'error', 'warn'], // console methods
+        methods: ['log', 'error', 'warn', 'time', 'timeEnd'], // console methods
     }
 
     var p = {};
@@ -20,9 +20,20 @@ window.WebConsole = function(params) {
     function bindConsoleWidthSocket(method) {
         var oldMethod = console[method];
         console[method] = function() {
+            var args = [].slice.apply(arguments);
+            switch (method) {
+                /* navtive time timeEnd was not accuracy
+                because network delay, so need to send Date.now() */
+                case 'time':
+                case 'timeEnd':
+                    args = [Date.now()].concat(args);
+                    break;
+                default:
+                    //donothig
+            }
             socket.emit('echo', {
                 type: method,
-                args: arguments
+                args: args
             })
             oldMethod.apply(console, arguments);
         }

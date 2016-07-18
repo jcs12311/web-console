@@ -14,13 +14,23 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 var socket = io();
+var timeTable = {};
 socket.on('echo', function(msg) {
     var type = msg.type, args = msg.args;
-    var arr = [];
-    for(var def in args){
-    	arr.push(args[def]);
+    var arr = [].slice.apply(args);
+    switch(type) {
+      case 'time':
+        timeTable[arr[1]] = arr[0];
+        break;
+      case 'timeEnd':
+        if(timeTable[arr[1]]){
+          console.log(arr[1], (arr[0] - timeTable[arr[1]]).toFixed(3) + 'ms');
+          delete timeTable[arr[1]];
+        }
+        break;
+      default:
+        console[type].apply(console, arr);
     }
-    console[type].apply(console, arr);
 })
 </script>
 </body>
