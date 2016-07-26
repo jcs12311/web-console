@@ -1,11 +1,12 @@
 {
   "name": "jsweb-console",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "console.log on mobile and see the result on pc, for mobile debug",
   "main": "./bin/jsweb-console",
   "bin": {
     "http-server": "./bin/jsweb-console"
   },
+  "homepage": "https://github.com/jcs12311/web-console",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
